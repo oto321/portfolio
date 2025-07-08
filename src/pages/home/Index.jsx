@@ -9,19 +9,20 @@ import Contact from "./../../components/contact/Contact.jsx";
 import Projects from "./../../components/projects/Projects.jsx";
 import Tools from "./../../components/tools/Tools.jsx";
 
+function PortfolioApp() {
+  const [orientation, setOrientation] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
 
-function home() {
-  const [orientation, setOrientation] = useState(null);
-
-  function flipOrientation() {
-    console.log("orientation before: ", orientation);
-    setOrientation(!orientation);
-    console.log("orientation after: ", orientation);
-  }
+  const sectionRefs = {
+    home: useRef(null),
+    about: useRef(null),
+    tools: useRef(null),
+    projects: useRef(null),
+    contact: useRef(null),
+  };
 
   useEffect(() => {
-
-    function handleScroll() {
+    function handleScrollOrientation() {
       const aboutPoint = window.innerHeight * 0.4;
       const scrollY = window.scrollY;
 
@@ -32,141 +33,110 @@ function home() {
       }
     }
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScrollOrientation);
+    return () => window.removeEventListener("scroll", handleScrollOrientation);
   }, []);
+
+  useEffect(() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.6,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+          history.replaceState(null, '', `#${entry.target.id}`);
+        }
+      });
+    }, observerOptions);
+
+    for (const key in sectionRefs) {
+      if (sectionRefs[key].current) {
+        observer.observe(sectionRefs[key].current);
+      }
+    }
+
+    return () => {
+      for (const key in sectionRefs) {
+        if (sectionRefs[key].current) {
+          observer.unobserve(sectionRefs[key].current);
+        }
+      }
+      observer.disconnect();
+    };
+  }, []);
+
+  const renderSection = (Component, id, ref, initialX) => {
+    const inView = useInView(ref, { threshold: 0.2 });
+
+    return (
+      <motion.section
+        ref={ref}
+        id={id}
+        className="min-h-screen flex items-center justify-center py-16"
+        initial={{ opacity: 0, x: initialX }}
+        animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: initialX }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
+        <Component />
+      </motion.section>
+    );
+  };
 
   return (
     <div className="relative min-h-screen overflow-hidden">
-      {/* Background*/}
+      {/* Background elements */}
       <div className="-z-10">
         <div className="-z-10 fixed inset-0 background-div"></div>
-        <div className="-z-10 fixed inset-0 bg-neutral-700/50 backdrop-blur-2xl"></div>
+        <div className="-z-10 fixed inset-0 bg-neutral-700/10 backdrop-blur-lg"></div>
       </div>
 
-      {/* navbar */}
+      {/* Navbar */}
       <div>
-        <div className={` text-white flex fixed 
-          transition-all duration-100 ease-linear
-        ${orientation ?
+        <div className={`
+          text-white flex fixed
+          transition-all duration-500 ease-in-out z-50
+          ${orientation ?
             "flex-row p-8 left-0 top-1/2 translate-y-[-50%]"
             :
             "flex-col p-8 top-0 left-1/2 translate-x-[-50%]"
           }
         `}>
-          <Navbar orientation={orientation} />
+          <Navbar orientation={orientation} activeSection={activeSection} />
         </div>
+
         <div className="flex flex-col mt-15">
           {/* Home section */}
-          <div className="px-[16.66%] max-w-screen-lg mx-auto space-y-48">
-            {(() => {
-              const ref = useRef(null);
-              const inView = useInView(ref, { threshold: 0.2 });
-
-              return (
-                <motion.section
-                  ref={ref}
-                  id="home"
-                  className="min-h-screen flex items-center justify-center"
-                  initial={{ opacity: 0, x: -100 }}
-                  animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -100 }}
-                  transition={{ duration: 0.6, ease: "easeOut" }}
-                >
-                  <Home />
-                </motion.section>
-              );
-            })()}
+          <div className="px-[16.66%] mx-auto space-y-48">
+            {renderSection(Home, "home", sectionRefs.home, -100)}
           </div>
 
           {/* About section */}
-          <div className="px-[16.66%] max-w-screen-lg mx-auto space-y-48">
-            {(() => {
-              const ref = useRef(null);
-              const inView = useInView(ref, { threshold: 0.2 });
-
-              return (
-                <motion.section
-                  ref={ref}
-                  id="about"
-                  className="min-h-screen flex items-center justify-center"
-                  initial={{ opacity: 0, x: 100 }}
-                  animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 100 }}
-                  transition={{ duration: 0.6, ease: "easeOut" }}
-                >
-                  <About />
-                </motion.section>
-              );
-            })()}
+          <div className="px-[16.66%] mx-auto space-y-48">
+            {renderSection(About, "about", sectionRefs.about, 100)}
           </div>
 
           {/* Tools section */}
           <div className="px-[16.66%] max-w-screen-lg mx-auto space-y-48">
-            {(() => {
-              const ref = useRef(null);
-              const inView = useInView(ref, { threshold: 0.2 });
-
-              return (
-                <motion.section
-                  ref={ref}
-                  id="tools"
-                  className="min-h-screen flex items-center justify-center"
-                  initial={{ opacity: 0, x: -100 }}
-                  animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -100 }}
-                  transition={{ duration: 0.6, ease: "easeOut" }}
-                >
-                  <Tools />
-                </motion.section>
-              );
-            })()}
+            {renderSection(Tools, "tools", sectionRefs.tools, -100)}
           </div>
 
           {/* Projects section */}
           <div className="px-[16.66%] max-w-screen-lg mx-auto space-y-48">
-            {(() => {
-              const ref = useRef(null);
-              const inView = useInView(ref, { threshold: 0.2 });
-
-              return (
-                <motion.section
-                  ref={ref}
-                  id="projects"
-                  className="min-h-screen flex items-center justify-center"
-                  initial={{ opacity: 0, x: 100 }}
-                  animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 100 }}
-                  transition={{ duration: 0.6, ease: "easeOut" }}
-                >
-                  <Projects />
-                </motion.section>
-              );
-            })()}
+            {renderSection(Projects, "projects", sectionRefs.projects, 100)}
           </div>
 
           {/* Contact section */}
           <div className="px-[16.66%] max-w-screen-lg mx-auto space-y-48">
-            {(() => {
-              const ref = useRef(null);
-              const inView = useInView(ref, { threshold: 0.2 });
-
-              return (
-                <motion.section
-                  ref={ref}
-                  id="contact"
-                  className="min-h-screen flex items-center justify-center"
-                  initial={{ opacity: 0, x: -100 }}
-                  animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -100 }}
-                  transition={{ duration: 0.6, ease: "easeOut" }}
-                >
-                  <Contact />
-                </motion.section>
-              );
-            })()}
+            {renderSection(Contact, "contact", sectionRefs.contact, -100)}
           </div>
         </div>
-
       </div>
-      <button onClick={flipOrientation}>boo</button>
     </div>
   );
 }
 
-export default home;
+export default PortfolioApp;
