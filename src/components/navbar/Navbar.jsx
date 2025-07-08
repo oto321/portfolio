@@ -49,7 +49,7 @@ function ContactIcon() {
 
 
 
-function NavBar({ orientation }) {
+function NavBar({ orientation, active }) {
   // true is vertical, false is horizontal
 
 
@@ -57,20 +57,20 @@ function NavBar({ orientation }) {
     const [hover, setHover] = useState(null);
     const ImageComponent = image;
 
-    function hoverFlip(value) {
-      console.log("flipping to value: ", value);
-      setHover(value);
-      console.log("flipped to value: ", value);
-    }
     return (
       <li style={{ fontFamily: "Orbitron" }} onMouseEnter={() => hoverFlip(true)} onMouseLeave={() => hoverFlip(false)}>
         <button
-          className="
+          className={`
           relative text-lg text-white font-extrabold py-2 px-4 overflow-hidden rounded-full 
-            border-y-cyan-700 border-y-2
+      
           hover:text-black group
           transition-all duration-100 ease-in-out
-        "
+          ${text === active ?
+              "            border-y-cyan-700 border-y-2"
+              :
+              null
+            }
+        `}
         >
           <div
             className={`
