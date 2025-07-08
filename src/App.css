@@ -1,1 +1,23 @@
 @import "tailwindcss";
+
+.background-div {
+  animation: gradient 60s linear infinite;
+  background: linear-gradient(45deg, #253a65, black);
+  background-size: 5% 100%;
+  rotate: 45deg;
+  scale: 10;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 50% 50%;
+  }
+
+  100% {
+    background-position: 100% 50%;
+  }
+}

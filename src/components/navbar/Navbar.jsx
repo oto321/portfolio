@@ -1,3 +1,4 @@
+import { useState } from "react";
 
 function HomeIcon() {
   return (<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
@@ -31,17 +32,48 @@ function ProjectsIcon() {
 }
 
 
+function NavBar({ orientation }) {
+  // true is vertical, false is horizontal
 
-function NavBar() {
+
+  function Item({ image }) {
+    const ImageComponent = image;
+    return (
+      <li style={{ fontFamily: "Orbitron" }}>
+        <button
+          className="
+          relative text-lg text-white font-extrabold py-2 px-4 overflow-hidden rounded-full 
+          hover:text-black group
+          transition-all duration-100 ease-in-out
+        "
+        >
+          <div
+            className={`
+            absolute inset-0 rounded-full bg-cyan-300
+            transition-all duration-300 ease-in-out
+            ${orientation ?
+                'scale-y-0 group-hover:scale-y-100 -z-10'
+                :
+                'scale-x-0 group-hover:scale-x-100 -z-10'}         
+          `}
+          />
+          <ImageComponent />
+        </button>
+      </li>
+    );
+  }
   return (
-    <div className="flex justify-center ">
-      <nav className="
+    <div className="flex ">
+      <nav className={`
     rounded-2xl bg-neutral-800 backdrop-blur-3xl w-fit px-5 py-3
     border-b-2 border-b-neutral-600 border-t-2 border-t-neutral-300
-    hover:drop-shadow-lg hover:drop-shadow-cyan-400/50 hover:px-10
-    transition-all duration-300 linear
-    ">
-        <ul className="inline-flex gap-5">
+    hover:drop-shadow-lg hover:drop-shadow-cyan-400/50     transition-all duration-300 linear
+    `}>
+        <ul className={` gap-5 flex ${orientation ?
+          "flex-col"
+          :
+          "flex-row"
+          }`}>
           <Item image={HomeIcon} />
           <Item image={AboutIcon} />
           <Item image={ProjectsIcon} />
@@ -52,28 +84,6 @@ function NavBar() {
   );
 }
 
-function Item({ image }) {
-  const ImageComponent = image;
-  return (
-    <li style={{ fontFamily: "Orbitron" }}>
-      <button
-        className="
-          relative text-lg text-white font-extrabold py-2 px-4 overflow-hidden rounded-full 
-          hover:text-black group
-          transition-all duration-100 ease-in-out
-        "
-      >
-        <div
-          className="
-            absolute inset-0 rounded-full bg-cyan-300
-            scale-x-0 group-hover:scale-x-100 -z-10
-            transition-all duration-300 ease-in-out
-          "
-        />
-        <ImageComponent />
-      </button>
-    </li>
-  );
-}
+
 
 export default NavBar;
