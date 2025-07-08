@@ -36,10 +36,17 @@ function NavBar({ orientation }) {
   // true is vertical, false is horizontal
 
 
-  function Item({ image }) {
+  function Item({ image, text }) {
+    const [hover, setHover] = useState(null);
     const ImageComponent = image;
+
+    function hoverFlip(value) {
+      console.log("flipping to value: ", value);
+      setHover(value);
+      console.log("flipped to value: ", value);
+    }
     return (
-      <li style={{ fontFamily: "Orbitron" }}>
+      <li style={{ fontFamily: "Orbitron" }} onMouseEnter={() => hoverFlip(true)} onMouseLeave={() => hoverFlip(false)}>
         <button
           className="
           relative text-lg text-white font-extrabold py-2 px-4 overflow-hidden rounded-full 
@@ -59,6 +66,21 @@ function NavBar({ orientation }) {
           />
           <ImageComponent />
         </button>
+        {hover && (
+          <div
+            className={`
+              absolute  mt-2
+              bg-black text-white text-2xl rounded px-2 py-1
+              whitespace-nowrap flex z-20
+${orientation
+                ? "top-1/2 left-full ml-3 transform -translate-y-1/2 flex-col "  // vertical sidebar: right side, vertically centered
+                : "top-full left-1/2 mt-2 transform -translate-x-1/2 flex-row " // horizontal sidebar: below, horizontally centered, rotated
+              }`
+            }>
+            <h1 className="z-100 text-white">            {text}
+            </h1>
+          </div>
+        )}
       </li>
     );
   }
@@ -74,10 +96,10 @@ function NavBar({ orientation }) {
           :
           "flex-row"
           }`}>
-          <Item image={HomeIcon} />
-          <Item image={AboutIcon} />
-          <Item image={ProjectsIcon} />
-          <Item image={ContactIcon} />
+          <Item image={HomeIcon} text="Home" />
+          <Item image={AboutIcon} text="About" />
+          <Item image={ProjectsIcon} text="Projects" />
+          <Item image={ContactIcon} text="Contact" />
         </ul>
       </nav>
     </div>
