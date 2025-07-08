@@ -32,10 +32,12 @@ This is my personal portfolio website built with **React**, styled using **Tailw
 ```bash
 git clone https://github.com/yourusername/your-portfolio.git
 cd your-portfolio
-
+```
 2. Install dependencies
+```bash
 npm install
-
+```
 3. Run the development server
+```bash
 npm run dev
-
+```
