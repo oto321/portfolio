@@ -1,6 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
+import { motion, useInView } from "framer-motion";
+
 import Navbar from "./../../components/navbar/Navbar.jsx";
+
 import About from "./../../components/about/About.jsx";
+import Home from "./../../components/home/Home.jsx";
+import Contact from "./../../components/contact/Contact.jsx";
+import Projects from "./../../components/projects/Projects.jsx";
+import Tools from "./../../components/tools/Tools.jsx";
 
 
 function home() {
@@ -15,7 +22,7 @@ function home() {
   useEffect(() => {
 
     function handleScroll() {
-      const aboutPoint = window.innerHeight * 0.8;
+      const aboutPoint = window.innerHeight * 0.4;
       const scrollY = window.scrollY;
 
       if (scrollY < aboutPoint) {
@@ -38,9 +45,9 @@ function home() {
       </div>
 
       {/* navbar */}
-      <div className="flex">
+      <div>
         <div className={` text-white flex fixed 
-          transition-all duration-200 linear
+          transition-all duration-100 ease-linear
         ${orientation ?
             "flex-row p-8 left-0 top-1/2 translate-y-[-50%]"
             :
@@ -49,13 +56,113 @@ function home() {
         `}>
           <Navbar orientation={orientation} />
         </div>
+        <div className="flex flex-col mt-15">
+          {/* Home section */}
+          <div className="px-[16.66%] max-w-screen-lg mx-auto space-y-48">
+            {(() => {
+              const ref = useRef(null);
+              const inView = useInView(ref, { threshold: 0.2 });
 
-        {/* About section */}
-        <div className="pt-[100%] px-[16.66%] max-w-screen-lg mx-auto space-y-48">
-          <section id="about" className="min-h-screen flex items-center justify-center">
-            <About />
-          </section>
+              return (
+                <motion.section
+                  ref={ref}
+                  id="home"
+                  className="min-h-screen flex items-center justify-center"
+                  initial={{ opacity: 0, x: -100 }}
+                  animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -100 }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                >
+                  <Home />
+                </motion.section>
+              );
+            })()}
+          </div>
+
+          {/* About section */}
+          <div className="px-[16.66%] max-w-screen-lg mx-auto space-y-48">
+            {(() => {
+              const ref = useRef(null);
+              const inView = useInView(ref, { threshold: 0.2 });
+
+              return (
+                <motion.section
+                  ref={ref}
+                  id="about"
+                  className="min-h-screen flex items-center justify-center"
+                  initial={{ opacity: 0, x: 100 }}
+                  animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 100 }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                >
+                  <About />
+                </motion.section>
+              );
+            })()}
+          </div>
+
+          {/* Tools section */}
+          <div className="px-[16.66%] max-w-screen-lg mx-auto space-y-48">
+            {(() => {
+              const ref = useRef(null);
+              const inView = useInView(ref, { threshold: 0.2 });
+
+              return (
+                <motion.section
+                  ref={ref}
+                  id="tools"
+                  className="min-h-screen flex items-center justify-center"
+                  initial={{ opacity: 0, x: -100 }}
+                  animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -100 }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                >
+                  <Tools />
+                </motion.section>
+              );
+            })()}
+          </div>
+
+          {/* Projects section */}
+          <div className="px-[16.66%] max-w-screen-lg mx-auto space-y-48">
+            {(() => {
+              const ref = useRef(null);
+              const inView = useInView(ref, { threshold: 0.2 });
+
+              return (
+                <motion.section
+                  ref={ref}
+                  id="projects"
+                  className="min-h-screen flex items-center justify-center"
+                  initial={{ opacity: 0, x: 100 }}
+                  animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 100 }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                >
+                  <Projects />
+                </motion.section>
+              );
+            })()}
+          </div>
+
+          {/* Contact section */}
+          <div className="px-[16.66%] max-w-screen-lg mx-auto space-y-48">
+            {(() => {
+              const ref = useRef(null);
+              const inView = useInView(ref, { threshold: 0.2 });
+
+              return (
+                <motion.section
+                  ref={ref}
+                  id="contact"
+                  className="min-h-screen flex items-center justify-center"
+                  initial={{ opacity: 0, x: -100 }}
+                  animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -100 }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                >
+                  <Contact />
+                </motion.section>
+              );
+            })()}
+          </div>
         </div>
+
       </div>
       <button onClick={flipOrientation}>boo</button>
     </div>
