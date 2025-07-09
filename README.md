@@ -8,6 +8,7 @@ This is my personal portfolio website built with **React**, styled using **Tailw
 - Responsive design powered by Tailwind CSS
 - Custom CSS for fine-tuned styles and animations
 - Uses Heroicons (https://heroicons.com/) for modern, SVG icons
+- Uses Tech icons (https://techicons.dev/) for logo svg
 - Fast development and build using Vite
 - Clean and modern UI to showcase projects, skills, and contact info
 

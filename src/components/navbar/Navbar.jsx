@@ -112,7 +112,7 @@ function NavBar({ orientation, activeSection }) {
       <nav className={`
         rounded-2xl bg-neutral-800 backdrop-blur-3xl w-fit px-5 py-3
         border-b-2 border-b-neutral-600 border-t-2 border-t-neutral-300
-        hover:drop-shadow-lg hover:drop-shadow-cyan-400/50 transition-all duration-300 linear
+        hover:drop-shadow-lg hover:drop-shadow-cyan-400/50 transition-all duration-500 ease-in-out
       `}>
         <ul className={` gap-5 flex ${orientation ?
           "flex-col"
