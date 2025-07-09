@@ -74,29 +74,29 @@ function Home() {
       transition={{ type: 'spring', stiffness: 200, damping: 20 }}
     >
       <motion.div
-        className="flex flex-col md:flex-row items-center justify-center md:justify-start space-y-8 md:space-y-0 md:space-x-8"
+        className="flex flex-col gap-10 md:flex-row items-center p-5 justify-center md:justify-start space-y-8 md:space-y-0 md:space-x-8"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        <motion.div className="flex-shrink-0" variants={itemVariants}>
+        <motion.div className="flex-shrink-0 hover:scale-110 transition-all duration-500 ease-in-out" variants={itemVariants}>
           <PhotoWrapper />
         </motion.div>
 
         <div className="flex-grow">
-          <motion.h1 className="text-4xl md:text-6xl font-extrabold mb-4 leading-tight" variants={itemVariants}>
+          <motion.h1 className="text-4xl hover:scale-110 transition-all duration-500 ease-in-out md:text-6xl font-extrabold mb-4 leading-tight" variants={itemVariants}>
             <span className="block text-white drop-shadow-md">Navraj Mann</span>
             <span className="block text-cyan-300 drop-shadow-md">Software Engineering Student</span>
           </motion.h1>
           <motion.p
-            className="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl mx-auto md:mx-0"
+            className="text-lg hover:scale-110 transition-all duration-500 ease-in-out md:text-xl text-gray-200 mb-8 max-w-2xl mx-auto md:mx-0"
             variants={itemVariants}
           >
             As a software engineering student, I'm driven to learn and apply clean code principles to craft engaging web experiences.
           </motion.p>
           <motion.a
             href="#projects"
-            className="inline-block bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 shadow-lg text-lg"
+            className="inline-block bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-3 px-8 rounded-full hover:scale-110 transition-all duration-500 ease-in-out shadow-lg text-lg"
             variants={itemVariants}
           >
             Explore My Work
@@ -107,9 +107,9 @@ function Home() {
       <motion.button
         aria-label="Scroll to About"
         onClick={() => scrollToSection('about')}
-        whileHover={{ scale: 1.3, color: '#22d3ee' }}
+        whileHover={{ scale: 1.5, color: '#22d3ee' }}
         whileTap={{ scale: 0.95 }}
-        className="absolute bottom-4 right-4 text-white hover:text-cyan-400 transition-colors"
+        className="absolute bottom-12 right-8 text-white hover:text-cyan-400 transition-colors"
         title="Go to About section"
       >
         <DownArrow />

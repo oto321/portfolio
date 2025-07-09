@@ -119,7 +119,7 @@ function PortfolioApp() {
           </div>
 
           {/* Tools section */}
-          <div className="px-[16.66%] mx-auto space-y-48">
+          <div className="px-[16.66%] mx-auto ">
             {renderSection(Tools, "tools", sectionRefs.tools, -100)}
           </div>
 

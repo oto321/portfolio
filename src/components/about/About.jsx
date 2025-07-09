@@ -85,12 +85,18 @@ function About() {
       whileHover={cardHover}
       transition={{ type: "spring", stiffness: 200, damping: 20 }}
     >
-      <motion.div className="flex flex-col md:flex-row items-center md:justify-start space-y-8 md:space-y-0 md:space-x-8">
-        <div className="flex-grow">
-          <motion.h1 className="text-4xl md:text-6xl font-extrabold mb-6 leading-tight text-cyan-300 drop-shadow-md" variants={headingVariants}>
-            About me
-          </motion.h1>
-          <motion.p className="text-white text-lg md:text-xl max-w-3xl drop-shadow-md" variants={paragraphVariants}>
+      <motion.div className="flex flex-col group md:flex-row items-center md:justify-start space-y-8 md:space-y-0 md:space-x-8">
+        <div className="flex-grow ">
+          <h1
+            className="
+    text-cyan-300 text-7xl font-extrabold
+    text-center block text-shadow-lg mb-10
+    underline underline-cyan-600 
+    hover:drop-shadow-cyan-400/40 hover:drop-shadow-xl 
+    hover:scale-120 transition-all duration-500 ease-in-out">
+            About Me
+          </h1>
+          <motion.p className="text-white p-20 text-2xl text-center drop-shadow-md hover:scale-105 transition-all duration-500 ease-in-out" variants={paragraphVariants}>
             My coding journey began when I was 10, experimenting with JavaScript on Khan Academy.
             That early spark led me briefly into SpriteKit and then into HTML, which I explored briefly.
             By 12, I was diving into Unity, and during high school, I had bursts of motivation where
@@ -102,14 +108,15 @@ function About() {
             life.
           </motion.p>
         </div>
+
       </motion.div>
 
       <motion.button
         aria-label="Scroll to Home"
         onClick={() => scrollToSection("home")}
-        whileHover={{ scale: 1.3, color: "#22d3ee" }}
+        whileHover={{ scale: 1.5, color: "#22d3ee" }}
         whileTap={{ scale: 0.95 }}
-        className="absolute top-4 right-4 text-white hover:text-cyan-400 transition-colors"
+        className="absolute top-12 right-8 text-white hover:text-cyan-400 transition-colors"
         title="Go to Home section"
       >
         <UpArrow />
@@ -118,9 +125,9 @@ function About() {
       <motion.button
         aria-label="Scroll to Tools"
         onClick={() => scrollToSection("tools")}
-        whileHover={{ scale: 1.3, color: "#22d3ee" }}
+        whileHover={{ scale: 1.5, color: "#22d3ee" }}
         whileTap={{ scale: 0.95 }}
-        className="absolute bottom-4 right-4 text-white hover:text-cyan-400 transition-colors"
+        className="absolute bottom-12 right-8 text-white hover:text-cyan-400 transition-colors"
         title="Go to Tools section"
       >
         <DownArrow />

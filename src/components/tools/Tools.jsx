@@ -12,6 +12,11 @@ import MySqlLogo from "./../../assets/images/MySQL.png";
 import PostgresqlLogo from "./../../assets/images/PostgresSQL.png";
 import DBeaverLogo from "./../../assets/images/DBeaver.png";
 import TailwindCssLogo from "./../../assets/images/Tailwind CSS.png";
+import ArchLogo from "./../../assets/images/Arch Linux.png"
+import NeovimLogo from "./../../assets/images/neovim.png"
+import UnityLogo from "./../../assets/images/Unity.png";
+import CPlusPlus from "./../../assets/images/C++.png"
+
 
 function DownArrow() {
   return (
@@ -59,10 +64,10 @@ function Logo({ image, name, link }) {
       variants={itemVariants}
       className="group p-3 inline-block text-center"
     >
-      <div className="p-2 h-20 w-20 border-2 rounded-2xl border-cyan-700 hover:drop-shadow-cyan-400/75 hover:drop-shadow-md hover:scale-110 transition-all duration-200 ease-in-out">
+      <div className="p-2 h-20 w-20 border-2 rounded-2xl border-cyan-700 hover:drop-shadow-cyan-400/75 hover:drop-shadow-md hover:scale-130 transition-all duration-200 ease-in-out">
         <img className="w-full h-full object-contain mx-auto" src={image} alt={name} />
       </div>
-      <h1 className="group-hover:text-teal-300 group-hover:translate-y-2 group-hover:text-shadow-xl transition-all duration-200 ease-in-out">
+      <h1 className="group-hover:text-teal-300 group-hover:scale-120 group-hover:translate-y-4 group-hover:text-shadow-xl transition-all duration-200 ease-in-out">
         {name}
       </h1>
     </motion.button>
@@ -90,6 +95,10 @@ function Tools() {
     { image: PostgresqlLogo, name: "PostgreSQL", link: "https://www.postgresql.org/" },
     { image: DBeaverLogo, name: "DBeaver", link: "https://dbeaver.io/" },
     { image: TailwindCssLogo, name: "Tailwind", link: "https://tailwindcss.com/" },
+    { image: ArchLogo, name: "Arch", link: "https://archlinux.org/" },
+    { image: NeovimLogo, name: "NeoVim", link: "https://neovim.io/" },
+    { image: UnityLogo, name: "Unity", link: "https://unity.com/" },
+    { image: CPlusPlus, name: "C++", link: "https://isocpp.org/" },
   ].reverse();
 
   return (
@@ -115,7 +124,7 @@ function Tools() {
         </h1>
       </motion.div>
 
-      <motion.div className="grid grid-cols-5 items-center gap-6 overflow-x-auto">
+      <motion.div className="grid grid-cols-5 p-20 items-center gap-6 overflow-x-auto">
         {tools.map((tool, index) => (
           <Logo key={index} {...tool} />
         ))}
@@ -124,9 +133,9 @@ function Tools() {
       <motion.button
         aria-label="Scroll to About"
         onClick={() => scrollToSection("about")}
-        whileHover={{ scale: 1.3, color: "#22d3ee" }}
+        whileHover={{ scale: 1.5, color: "#22d3ee" }}
         whileTap={{ scale: 0.95 }}
-        className="absolute top-4 right-4 text-white hover:text-cyan-400 transition-colors"
+        className="absolute top-12 right-8 text-white hover:text-cyan-400 transition-colors"
         title="Go to About section"
       >
         <UpArrow />
@@ -135,9 +144,9 @@ function Tools() {
       <motion.button
         aria-label="Scroll to Projects"
         onClick={() => scrollToSection("projects")}
-        whileHover={{ scale: 1.3, color: "#22d3ee" }}
+        whileHover={{ scale: 1.5, color: "#22d3ee" }}
         whileTap={{ scale: 0.95 }}
-        className="absolute bottom-4 right-4 text-white hover:text-cyan-400 transition-colors"
+        className="absolute bottom-12 right-8 text-white hover:text-cyan-400 transition-colors"
         title="Go to Projects section"
       >
         <DownArrow />
