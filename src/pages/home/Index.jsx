@@ -10,7 +10,7 @@ import Projects from "./../../components/projects/Projects.jsx";
 import Tools from "./../../components/tools/Tools.jsx";
 
 function PortfolioApp() {
-  const [orientation, setOrientation] = useState(false);
+  const [orientation, setOrientation] = useState(null);
   const [activeSection, setActiveSection] = useState('home');
 
   const sectionRefs = {
