@@ -97,7 +97,7 @@ function PortfolioApp() {
       <div>
         <div className={`
           text-white flex fixed
-          transition-all duration-1000 ease-in-out z-50
+          transition-all duration-200 linear z-50
           ${orientation ?
             "flex-row p-8 left-0 top-1/2 translate-y-[-50%]"
             :
@@ -114,7 +114,7 @@ function PortfolioApp() {
           </div>
 
           {/* About section */}
-          <div className="px-[16.66%] mx-auto space-y-48">
+          <div className="px-[16.66%] mx-auto mt-10 space-y-48">
             {renderSection(About, "about", sectionRefs.about, 100)}
           </div>
 
