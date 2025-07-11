@@ -1,7 +1,7 @@
 import React, { useState, Suspense } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-import SuppSense from "./SuppSense";
+import SuppSense from "./SuppSense/SuppSense.jsx";
 import OnTrack from "./OnTrack";
 
 function DownArrow() {

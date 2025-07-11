@@ -16,6 +16,7 @@ import ArchLogo from "./../../assets/images/Arch Linux.png"
 import NeovimLogo from "./../../assets/images/neovim.png"
 import UnityLogo from "./../../assets/images/Unity.png";
 import CPlusPlus from "./../../assets/images/C++.png"
+import GitHubLogo from "./../../assets/images/GitHub.png";
 
 
 function DownArrow() {
@@ -50,7 +51,7 @@ const itemVariants = {
     y: 0,
     opacity: 1,
     transition: {
-      duration: 0.4,
+      duration: 0.1,
       ease: "easeOut",
     },
   },
@@ -99,6 +100,7 @@ function Tools() {
     { image: NeovimLogo, name: "NeoVim", link: "https://neovim.io/" },
     { image: UnityLogo, name: "Unity", link: "https://unity.com/" },
     { image: CPlusPlus, name: "C++", link: "https://isocpp.org/" },
+    { image: GitHubLogo, name: "GitHub", link: "https://github.com/oto321" },
   ].reverse();
 
   return (
@@ -109,7 +111,7 @@ function Tools() {
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       className="
-        groupDiv relative p-8 w-full max-w-4xl mx-auto
+        groupDiv relative p-2 w-full max-w-4xl mx-auto
         bg-gradient-to-b from-white/10 to-cyan-500/0
         backdrop-blur-lg rounded-xl shadow-lg border
         border-white/20 text-center text-white overflow-hidden
@@ -124,7 +126,7 @@ function Tools() {
         </h1>
       </motion.div>
 
-      <motion.div className="grid grid-cols-5 p-20 items-center gap-6 overflow-x-auto">
+      <motion.div className="grid grid-cols-5 p-5 items-center gap-6 overflow-x-auto">
         {tools.map((tool, index) => (
           <Logo key={index} {...tool} />
         ))}
