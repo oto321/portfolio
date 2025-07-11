@@ -2,7 +2,7 @@ import React, { useState, Suspense } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import SuppSense from "./SuppSense/SuppSense.jsx";
-import OnTrack from "./OnTrack";
+import OnTrack from "./OnTrack/OnTrack.jsx";
 
 function DownArrow() {
   return (
