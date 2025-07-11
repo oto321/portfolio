@@ -124,7 +124,7 @@ function PortfolioApp() {
           </div>
 
           {/* Projects section */}
-          <div className="px-[16.66%] max-w-screen-lg mx-auto space-y-48">
+          <div className="px-[16.66%] w-full mx-auto space-y-48">
             {renderSection(Projects, "projects", sectionRefs.projects, 100)}
           </div>
 

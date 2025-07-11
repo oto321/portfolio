@@ -93,10 +93,10 @@ function About() {
     text-center block text-shadow-lg mb-10
     underline underline-cyan-600 
     hover:drop-shadow-cyan-400/40 hover:drop-shadow-xl 
-    hover:scale-120 transition-all duration-500 ease-in-out">
+    hover:scale-110 transition-all duration-500 ease-in-out">
             About Me
           </h1>
-          <motion.p className="text-white p-20 text-2xl text-center drop-shadow-md hover:scale-105 transition-all duration-500 ease-in-out" variants={paragraphVariants}>
+          <motion.p className="text-white p-15 pt-5 text-2xl text-center drop-shadow-md hover:scale-105 transition-all duration-500 ease-in-out" variants={paragraphVariants}>
             My coding journey began when I was 10, experimenting with JavaScript on Khan Academy.
             That early spark led me briefly into SpriteKit and then into HTML, which I explored briefly.
             By 12, I was diving into Unity, and during high school, I had bursts of motivation where
