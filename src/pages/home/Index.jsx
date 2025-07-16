@@ -109,17 +109,17 @@ function PortfolioApp() {
 
         <div className="flex flex-col mt-15">
           {/* Home section */}
-          <div className="px-[16.66%] mx-auto space-y-48">
+          <div className="px-[16.66%] w-full mx-auto space-y-48">
             {renderSection(Home, "home", sectionRefs.home, -100)}
           </div>
 
           {/* About section */}
-          <div className="px-[16.66%] mx-auto mt-10 space-y-48">
+          <div className="px-[16.66%] w-full mx-auto mt-10 space-y-48">
             {renderSection(About, "about", sectionRefs.about, 100)}
           </div>
 
           {/* Tools section */}
-          <div className="px-[16.66%] mx-auto ">
+          <div className="px-[16.66%] w-full mx-auto ">
             {renderSection(Tools, "tools", sectionRefs.tools, -100)}
           </div>
 
@@ -129,7 +129,7 @@ function PortfolioApp() {
           </div>
 
           {/* Contact section */}
-          <div className="px-[16.66%] max-w-screen-lg mx-auto space-y-48">
+          <div className="px-[16.66%] w-full mx-auto space-y-48">
             {renderSection(Contact, "contact", sectionRefs.contact, -100)}
           </div>
         </div>

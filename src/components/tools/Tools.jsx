@@ -63,12 +63,23 @@ function Logo({ image, name, link }) {
       role="link"
       onClick={() => window.open(link, "_blank", "noopener,noreferrer")}
       variants={itemVariants}
-      className="group p-3 inline-block text-center"
+      className="group p-3 flex flex-col items-center justify-center text-center"
     >
-      <div className="p-2 h-20 w-20 border-2 rounded-2xl border-cyan-700 hover:drop-shadow-cyan-400/75 hover:drop-shadow-md hover:scale-130 transition-all duration-200 ease-in-out">
+      <div
+        className="
+          p-2 h-20 w-20 border-2 rounded-2xl
+          border-cyan-700 group-hover:drop-shadow-cyan-400/75
+          group-hover:drop-shadow-md group-hover:scale-130
+          transition-all duration-200 ease-in-out
+        ">
         <img className="w-full h-full object-contain mx-auto" src={image} alt={name} />
       </div>
-      <h1 className="group-hover:text-teal-300 group-hover:scale-120 group-hover:translate-y-4 group-hover:text-shadow-xl transition-all duration-200 ease-in-out">
+      <h1
+        className="
+          text-center group-hover:text-teal-300 group-hover:scale-120
+          group-hover:translate-y-4 group-hover:text-shadow-xl
+          transition-all duration-200 ease-in-out
+      ">
         {name}
       </h1>
     </motion.button>
@@ -121,7 +132,13 @@ function Tools() {
       "
     >
       <motion.div variants={itemVariants}>
-        <h1 className="text-cyan-300 text-7xl font-extrabold text-center block text-shadow-lg mb-10 underline underline-cyan-600 hover:drop-shadow-cyan-400/40 hover:drop-shadow-xl hover:scale-120 transition-all duration-500 ease-in-out">
+        <h1
+          className="
+            text-cyan-300 text-7xl font-extrabold text-center 
+            block text-shadow-lg mb-10 underline underline-cyan-600 
+            hover:drop-shadow-cyan-400/40 hover:drop-shadow-xl 
+            hover:scale-120 transition-all duration-500 ease-in-out
+          ">
           Tools
         </h1>
       </motion.div>
